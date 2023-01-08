@@ -2,3 +2,21 @@
   margin: 66px 200px 60px;
   max-width: 880px;
 }
+
+@media screen and (max-width: 1100px){
+  .footer{
+    margin: 66px 100px 60px;
+  }
+}
+
+@media screen and (max-width: 680px){
+  .footer{
+    margin: 66px 40px 60px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .footer{
+    margin: 48px 19px 36px;
+  }
+}

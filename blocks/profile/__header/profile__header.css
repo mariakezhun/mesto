@@ -3,3 +3,9 @@
   align-items: baseline;
   column-gap: 18px;
 }
+
+@media screen and (max-width: 420px){
+  .profile__header{
+    column-gap: 10px;
+  }
+}

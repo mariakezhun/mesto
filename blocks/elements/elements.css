@@ -4,5 +4,37 @@
   column-gap: 17px;
   row-gap: 20px;
   max-width: 880px;
-  margin: 0 auto;
+  margin: 0 200px 0;
+}
+
+
+@media screen and (max-width: 1100px){
+  .elements{
+    justify-items: center;
+    margin: 0 100px 0;
+  }
+}
+
+@media screen and (max-width: 880px){
+  .elements{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 680px){
+  .elements{
+    margin: 0 40px 0;
+  }
+}
+
+@media screen and (max-width: 540px){
+  .elements{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .elements{
+    margin: 0 19px 0;
+  }
 }

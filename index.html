@@ -28,42 +28,42 @@
         </section>
         <section class="elements">
           <div class="element">
-            <img class="element__image" src="./images/element-karachaevsk.jpg" alt="">
+            <img class="element__image" src="./images/element-winter-baikal.png" alt="зимний Байкал">
             <div class="element__header-container">
-              <h2 class="element__header">Карачаевск</h2>
+              <h2 class="element__header">Байкал</h2>
               <button class="element__like" type="button"></button>
             </div>
           </div>
           <div class="element">
-            <img class="element__image" src="./images/element-karachaevsk.jpg" alt="">
+            <img class="element__image" src="./images/element-kamchatka.png" alt="Камчатка">
             <div class="element__header-container">
-              <h2 class="element__header">Карачаевск</h2>
+              <h2 class="element__header">Камчатка</h2>
               <button class="element__like"></button>
             </div>
           </div>
           <div class="element">
-            <img class="element__image" src="./images/element-karachaevsk.jpg" alt="">
+            <img class="element__image" src="./images/element-elbrus.png" alt="Эльбрус">
             <div class="element__header-container">
-              <h2 class="element__header">Карачаевск</h2>
+              <h2 class="element__header">Эльбрус</h2>
               <button class="element__like"></button>
             </div>
           </div>
           <div class="element">
-            <img class="element__image" src="./images/element-karachaevsk.jpg" alt="">
+            <img class="element__image" src="./images/element-karelia.png" alt="Карелия">
             <div class="element__header-container">
-              <h2 class="element__header">Карачаевск</h2>
+              <h2 class="element__header">Карелия</h2>
               <button class="element__like"></button>
             </div>
           </div>
           <div class="element">
-            <img class="element__image" src="./images/element-karachaevsk.jpg" alt="">
+            <img class="element__image" src="./images/element-kolsky.png" alt="Кольский полуостров">
             <div class="element__header-container">
-              <h2 class="element__header">Карачаевск</h2>
+              <h2 class="element__header">Кольский полуостров</h2>
               <button class="element__like"></button>
             </div>
           </div>
           <div class="element">
-            <img class="element__image" src="./images/element-karachaevsk.jpg" alt="">
+            <img class="element__image" src="./images/element-karachaevsk.jpg" alt="Карачаевск">
             <div class="element__header-container">
               <h2 class="element__header">Карачаевск</h2>
               <button class="element__like"></button>
@@ -72,14 +72,17 @@
         </section>
       </main>
       <footer class="footer">
-        <p class="footer__copyright">© 2022 Mesto Russia</p>
+        <p class="footer__copyright">© 2023 Mesto Russia</p>
       </footer>
       <section class="popup">
-        <div class="popup__form">
+        <div class="popup__container">
+          <button class="popup__close"></button>
           <label class="popup__heading">Редактировать профиль</label>
-          <input class="popup__text" type="text" placeholder="Жак-Ив Кусто">
-          <input class="popup__text" type="text" placeholder="Исследователь океана">
-          <button class="popup__button" type="submit">Сохранить</button>
+          <form class="popup__form">
+            <input class="popup__text popup__text_type_name" type="text" placeholder="Жак-Ив Кусто">
+            <input class="popup__text popup__text_type_job" type="text" placeholder="Исследователь океана">
+            <button class="popup__button" type="submit">Сохранить</button>
+          </form>
         </div>
       </section>
   </div>

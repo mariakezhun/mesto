@@ -26,55 +26,22 @@
         </div>
           <button class="profile__add-button" type="button"></button>
         </section>
-        <section class="elements">
+        <section class="elements"></section>
+        <template id="card-template">
           <div class="element">
-            <img class="element__image" src="./images/element-winter-baikal.png" alt="зимний Байкал">
+            <button class="element__trash"></button>
+            <img class="element__image" src="" alt="">
             <div class="element__header-container">
-              <h2 class="element__header">Байкал</h2>
+              <h2 class="element__header"></h2>
               <button class="element__like" type="button"></button>
             </div>
           </div>
-          <div class="element">
-            <img class="element__image" src="./images/element-kamchatka.png" alt="Камчатка">
-            <div class="element__header-container">
-              <h2 class="element__header">Камчатка</h2>
-              <button class="element__like"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img class="element__image" src="./images/element-elbrus.png" alt="Эльбрус">
-            <div class="element__header-container">
-              <h2 class="element__header">Эльбрус</h2>
-              <button class="element__like"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img class="element__image" src="./images/element-karelia.png" alt="Карелия">
-            <div class="element__header-container">
-              <h2 class="element__header">Карелия</h2>
-              <button class="element__like"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img class="element__image" src="./images/element-kolsky.png" alt="Кольский полуостров">
-            <div class="element__header-container">
-              <h2 class="element__header">Кольский полуостров</h2>
-              <button class="element__like"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img class="element__image" src="./images/element-karachaevsk.jpg" alt="Карачаевск">
-            <div class="element__header-container">
-              <h2 class="element__header">Карачаевск</h2>
-              <button class="element__like"></button>
-            </div>
-          </div>
-        </section>
+        </template>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2023 Mesto Russia</p>
       </footer>
-      <section class="popup">
+      <section class="popup popup_type_edit">
         <div class="popup__container">
           <button class="popup__close" type="button"></button>
           <h2 class="popup__heading">Редактировать профиль</h2>
@@ -83,6 +50,24 @@
             <input class="popup__text popup__text_type_job" type="text" placeholder="Исследователь океана" name="popup">
             <button class="popup__button" type="submit">Сохранить</button>
           </form>
+        </div>
+      </section>
+      <section class="popup popup_type_add">
+        <div class="popup__container">
+          <button class="popup__close" type="button"></button>
+          <h2 class="popup__heading">Новое место</h2>
+          <form class="popup__form" name="popup">
+            <input class="popup__text popup__text_type_title" type="text" placeholder="Название" name="popup">
+            <input class="popup__text popup__text_type_link" type="text" placeholder="Ссылка на картинку" name="popup">
+            <button class="popup__button" type="submit">Создать</button>
+          </form>
+        </div>
+      </section>
+      <section class="popup popup_type_image">
+        <div class="popup__container popup__container_type_image">
+          <button class="popup__close" type="button"></button>
+          <img class="popup__img" src="" alt="">
+          <h2 class="popup__heading popup__heading_type_image"></h2>
         </div>
       </section>
   </div>

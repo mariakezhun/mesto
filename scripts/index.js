@@ -15,9 +15,19 @@ const profileJob = document.querySelector('.profile__description');
 const formElement = popupEdit.querySelector('.popup__form');
 const nameInput = formElement.querySelector('.popup__text_type_name');
 const jobInput = formElement.querySelector('.popup__text_type_job');
-
+//элементы попапа с фото
 const popupImgTitle = popupImg.querySelector('.popup__heading_type_image');
 const popupImgImage = popupImg.querySelector('.popup__img');
+
+//находим шаблон и место куда он встает
+const cardTemplate = document.querySelector('#card-template').content.querySelector('.element');
+const elements = document.querySelector('.elements');
+//кнопка отправки формы попапа добавления
+const popupAddSubmitButton = popupAdd.querySelector('.popup__button');
+//инпуты попапа добавления
+const titleInput = popupAdd.querySelector('.popup__text_type_title');
+const linkInput = popupAdd.querySelector('.popup__text_type_link');
+const popupAddFormElement = popupAdd.querySelector('.popup__form');
 
 //функция открытия
 const openPopup = function(popup) {
@@ -34,62 +44,6 @@ function handleFormSubmitPopupEdit (evt) {
   profileJob.textContent = jobInput.value;
   popupEdit.classList.remove('popup_opened')
 }
-//обработчик события открытия попапа редактирования
-popupEditOpeneButton.addEventListener('click', function () {
-  openPopup(popupEdit);
-  nameInput.value = profileName.textContent
-  jobInput.value = profileJob.textContent
-});
-//обработчик события открытия попапа добавления
-popupAddOpeneButton.addEventListener('click', function () {
-  openPopup(popupAdd);
-});
-//обработчик события закрытия попапа редактирования
-popupEditCloseButton.addEventListener('click', function () {
-  closePopup(popupEdit);
-});
-//обработчик события закрытия попапа добавления
-popupAddCloseButton.addEventListener('click', function () {
-  closePopup(popupAdd);
-});
-//обработчик события сохранения изменений в попапе редактирования
-formElement.addEventListener('submit', handleFormSubmitPopupEdit);
-//массив карточек
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-//находим шаблон и место куда он встает
-const cardTemplate = document.querySelector('#card-template').content.querySelector('.element');
-const elements = document.querySelector('.elements');
-//кнопка отправки формы попапа добавления
-const popupAddSubmitButton = popupAdd.querySelector('.popup__button');
-//инпуты попапа добавления
-const titleInput = popupAdd.querySelector('.popup__text_type_title');
-const linkInput = popupAdd.querySelector('.popup__text_type_link');
-const popupAddFormElement = popupAdd.querySelector('.popup__form');
 //функция карточки
 function createCard(item) {
   const card = cardTemplate.cloneNode(true);
@@ -136,64 +90,26 @@ const popupAddSubmit = popupAddSubmitButton.addEventListener('click', (evt) => {
   popupAdd.classList.remove('popup_opened');
   popupAddFormElement.reset();
 }); 
+//обработчик события открытия попапа редактирования
+popupEditOpeneButton.addEventListener('click', function () {
+  openPopup(popupEdit);
+  nameInput.value = profileName.textContent
+  jobInput.value = profileJob.textContent
+});
+//обработчик события открытия попапа добавления
+popupAddOpeneButton.addEventListener('click', function () {
+  openPopup(popupAdd);
+});
+//обработчик события закрытия попапа редактирования
+popupEditCloseButton.addEventListener('click', function () {
+  closePopup(popupEdit);
+});
+//обработчик события закрытия попапа добавления
+popupAddCloseButton.addEventListener('click', function () {
+  closePopup(popupAdd);
+});
+//обработчик события сохранения изменений в попапе редактирования
+formElement.addEventListener('submit', handleFormSubmitPopupEdit);
 
 //обработчик события сохранения изменений добавленной карточки
 popupAddSubmitButton.addEventListener('submit', popupAddSubmit);
-
-/* СТАРЫЙ КОД, ЗАКОМЕНЧЕННЫЙ, НО ВЕСЬМА НЕ БЕСПОЛЕЗНЫЙ
-
-const popup = document.querySelector('.popup');
-const popupEdit = document.querySelector('.popup_type_edit');
-const popupAdd = document.querySelector('.popup_type_add');
-
-const profileName = document.querySelector('.profile__name');
-const profileJob = document.querySelector('.profile__description'); 
-const formElement = document.querySelector('.popup__form');
-const nameInput = formElement.querySelector('.popup__text_type_name');
-const jobInput = formElement.querySelector('.popup__text_type_job');
-
-const popupEditOpenButton = document.querySelector('.profile__edit-button');
-const popupAddOpenButton = document.querySelector('.profile__add-button');
-// кнопка закрытия
-const popupCloseButton = popup.querySelector('.popup__close');
-
-/*const openPopup = function(popup) {
-  popup.classList.add('popup_opened')
-};*/
-/*
-const openPopupEdit = function() {
-  popupEdit.classList.add('popup_opened')
-  nameInput.value = profileName.textContent
-  jobInput.value = profileJob.textContent
-};
-
-const openPopuAdd = function() {
-  popupAdd.classList.add('popup_opened')
-};
-
-function handleFormSubmitPopupEdit (evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    popupEdit.classList.remove('popup_opened')
-}
-
-function handleFormSubmitPopupEdit (evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  popupEdit.classList.remove('popup_opened')
-}
-
-const closePopup = function(){
-  popup.classList.remove('popup_opened')
-};
-
-formElement.addEventListener('submit', handleFormSubmitPopupEdit);
-
-popupEditOpenButton.addEventListener('click', openPopupEdit);
-
-popupAddOpenButton.addEventListener('click', openPopuAdd);
-
-popupCloseButton.addEventListener('click', closePopup); */
-

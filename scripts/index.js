@@ -12,9 +12,9 @@ const popupImgCloseButton = popupImg.querySelector('.popup__close');
 //элементы попапа редактирования
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__description'); 
-const formElement = popupEdit.querySelector('.popup__form');
-const nameInput = formElement.querySelector('.popup__text_type_name');
-const jobInput = formElement.querySelector('.popup__text_type_job');
+const formElementPopupEdit = popupEdit.querySelector('.popup__form');
+const nameInput = formElementPopupEdit.querySelector('.popup__text_type_name');
+const jobInput = formElementPopupEdit.querySelector('.popup__text_type_job');
 //элементы попапа с фото
 const popupImgTitle = popupImg.querySelector('.popup__heading_type_image');
 const popupImgImage = popupImg.querySelector('.popup__img');
@@ -42,7 +42,7 @@ function handleFormSubmitPopupEdit (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  popupEdit.classList.remove('popup_opened')
+  closePopup(popupEdit);
 }
 //функция карточки
 function createCard(item) {
@@ -59,6 +59,7 @@ function createCard(item) {
 
       popupImgTitle.textContent = cardTitle;
       popupImgImage.src = cardImg.src;
+      popupImgImage.alt = cardTitle;
     });
 
     popupImgCloseButton.addEventListener('click', function () {
@@ -87,7 +88,7 @@ const popupAddSubmit = popupAddSubmitButton.addEventListener('click', (evt) => {
 
   elements.prepend(card);
 
-  popupAdd.classList.remove('popup_opened');
+  closePopup(popupAdd);
   popupAddFormElement.reset();
 }); 
 //обработчик события открытия попапа редактирования
@@ -109,7 +110,7 @@ popupAddCloseButton.addEventListener('click', function () {
   closePopup(popupAdd);
 });
 //обработчик события сохранения изменений в попапе редактирования
-formElement.addEventListener('submit', handleFormSubmitPopupEdit);
+formElementPopupEdit.addEventListener('submit', handleFormSubmitPopupEdit);
 
 //обработчик события сохранения изменений добавленной карточки
 popupAddSubmitButton.addEventListener('submit', popupAddSubmit);

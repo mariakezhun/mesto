@@ -13,8 +13,8 @@ const popupImgCloseButton = popupImg.querySelector('.popup__close');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__description'); 
 const formElementPopupEdit = popupEdit.querySelector('.popup__form');
-const nameInput = formElementPopupEdit.querySelector('.popup__text_type_name');
-const jobInput = formElementPopupEdit.querySelector('.popup__text_type_job');
+const nameInput = formElementPopupEdit.querySelector('.popup__input_type_name');
+const jobInput = formElementPopupEdit.querySelector('.popup__input_type_job');
 //элементы попапа с фото
 const popupImgTitle = popupImg.querySelector('.popup__heading_type_image');
 const popupImgImage = popupImg.querySelector('.popup__img');
@@ -25,8 +25,8 @@ const elements = document.querySelector('.elements');
 //кнопка отправки формы попапа добавления
 const popupAddSubmitButton = popupAdd.querySelector('.popup__button');
 //инпуты попапа добавления
-const titleInput = popupAdd.querySelector('.popup__text_type_title');
-const linkInput = popupAdd.querySelector('.popup__text_type_link');
+const titleInput = popupAdd.querySelector('.popup__input_type_title');
+const linkInput = popupAdd.querySelector('.popup__input_type_link');
 const popupAddFormElement = popupAdd.querySelector('.popup__form');
 
 //функция открытия
@@ -36,6 +36,22 @@ const openPopup = function(popup) {
 //функция закрытия
 const closePopup = function(popup) {
   popup.classList.remove('popup_opened')
+};
+//функция закрытия по оверлею
+const closePopupByOverlay = function(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popupEdit);
+    closePopup(popupAdd);
+    closePopup(popupImg);
+  }
+};
+//функция закрытия по Esc
+const closePopupByEsc = function(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(popupEdit);
+    closePopup(popupAdd);
+    closePopup(popupImg);
+  }
 };
 //функция отправки формы попапа редактирования
 function handleFormSubmitPopupEdit (evt) {
@@ -91,6 +107,7 @@ const popupAddSubmit = popupAddSubmitButton.addEventListener('click', (evt) => {
   closePopup(popupAdd);
   popupAddFormElement.reset();
 }); 
+
 //обработчик события открытия попапа редактирования
 popupEditOpeneButton.addEventListener('click', function () {
   openPopup(popupEdit);
@@ -114,3 +131,9 @@ formElementPopupEdit.addEventListener('submit', handleFormSubmitPopupEdit);
 
 //обработчик события сохранения изменений добавленной карточки
 popupAddSubmitButton.addEventListener('submit', popupAddSubmit);
+
+popupEdit.addEventListener('click', closePopupByOverlay);
+popupAdd.addEventListener('click', closePopupByOverlay);
+popupImg.addEventListener('click', closePopupByOverlay);
+
+document.addEventListener('keydown', closePopupByEsc);

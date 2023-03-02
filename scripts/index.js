@@ -1,14 +1,44 @@
+//импорты
+import  Card  from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
+const initialCards = [
+  {
+    name: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    name: "Челябинская область",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    name: "Иваново",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    name: "Камчатка",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    name: "Холмогорский район",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    name: "Байкал",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
 //попапы
 const popupEdit = document.querySelector(".popup_type_edit");
 const popupAdd = document.querySelector(".popup_type_add");
-const popupImg = document.querySelector(".popup_type_image");
+export const popupImg = document.querySelector(".popup_type_image");
 //кнопки открытия
 const popupEditOpeneButton = document.querySelector(".profile__edit-button");
 const popupAddOpeneButton = document.querySelector(".profile__add-button");
 //кнопки закрытия
 const popupEditCloseButton = popupEdit.querySelector(".popup__close");
 const popupAddCloseButton = popupAdd.querySelector(".popup__close");
-const popupImgCloseButton = popupImg.querySelector(".popup__close");
+export const popupImgCloseButton = popupImg.querySelector(".popup__close");
 //элементы попапа редактирования
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__description");
@@ -16,8 +46,8 @@ const formElementPopupEdit = popupEdit.querySelector(".popup__form");
 const nameInput = formElementPopupEdit.querySelector(".popup__input_type_name");
 const jobInput = formElementPopupEdit.querySelector(".popup__input_type_job");
 //элементы попапа с фото
-const popupImgTitle = popupImg.querySelector(".popup__heading_type_image");
-const popupImgImage = popupImg.querySelector(".popup__img");
+export const popupImgTitle = popupImg.querySelector(".popup__heading_type_image");
+export const popupImgImage = popupImg.querySelector(".popup__img");
 
 //находим шаблон и место куда он встает
 const cardTemplate = document
@@ -48,7 +78,7 @@ const closePopupByOverlay = function (evt) {
   }
 };
 //функция закрытия по Esc
-const closePopupByEsc = function (evt) {
+export const closePopupByEsc = function (evt) {
   if (evt.key === "Escape") {
     closePopup(document.querySelector(".popup_opened"));
   }
@@ -60,6 +90,15 @@ function handleFormSubmitPopupEdit(evt) {
   profileJob.textContent = jobInput.value;
   closePopup(popupEdit);
 }
+
+initialCards.forEach((item) => {
+  const card = new Card(item, "#card-template");
+  const cardElement = card.generateCard();
+
+  document.querySelector(".elements").append(cardElement);
+});
+
+/*
 //функция карточки
 function createCard(item) {
   const card = cardTemplate.cloneNode(true);
@@ -95,20 +134,39 @@ function renderCards() {
 }
 
 renderCards();
+*/
+
 //функция добавления новой карточки
 const addNewCard = (evt) => {
   evt.preventDefault();
-  const title = titleInput.value;
-  const link = linkInput.value;
 
-  const card = createCard({ name: title, link: link });
+  const inputObj = {
+    name: titleInput.value,
+    link: linkInput.value,
+  };
 
+  const card = new Card(inputObj, "#card-template").generateCard();
   cardsContainer.prepend(card);
 
   closePopup(popupAdd);
   popupAddFormElement.reset();
-  disabledButton(formObj, popupAddSubmitButton);
+ // disabledButton(formObj, popupAddSubmitButton);
 };
+
+const formObj = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+const validyty1 = new FormValidator(formObj, formElementPopupEdit);
+const validyty2 = new FormValidator(formObj, popupAddFormElement);
+
+validyty1.enableValidation();
+validyty2.enableValidation();
 
 //обработчик события сохранения изменений добавленной карточки
 popupAddFormElement.addEventListener("submit", addNewCard);

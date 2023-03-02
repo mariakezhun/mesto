@@ -1,16 +1,17 @@
 import {popupImgCloseButton, popupImgTitle, popupImgImage, popupImg, closePopupByEsc} from './index.js'
 
 export default class Card {
-  constructor(data) {
+  constructor(data, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._trash = data.trash;
     this._like = data.like;
+    this._templateSelector = templateSelector;
   }
 
   _getTemplate() {
     const cardElement = document
-      .querySelector("#card-template")
+      .querySelector(this._templateSelector)
       .content.querySelector(".element")
       .cloneNode(true);
 

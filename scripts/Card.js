@@ -23,6 +23,7 @@ export default class Card {
     this._setEventListeners();
 
     this._element.querySelector(".element__image").src = this._link;
+    this._element.querySelector(".element__image").alt = this._name;
     this._element.querySelector(".element__header").textContent = this._name;
     this._element.querySelector(".element__trash").src = this._trash;
     this._element.querySelector(".element__like").src = this._like;
@@ -32,6 +33,7 @@ export default class Card {
 
   _handleOpenPopup() {
     popupImgImage.src = this._link;
+    popupImgImage.alt = this._name;
     popupImgTitle.textContent = this._name;
     popupImg.classList.add("popup_opened");
     document.addEventListener("keydown", closePopupByEsc);

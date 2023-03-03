@@ -150,7 +150,8 @@ const addNewCard = (evt) => {
 
   closePopup(popupAdd);
   popupAddFormElement.reset();
- // disabledButton(formObj, popupAddSubmitButton);
+  popupAddSubmitButton.classList.add('popup__button_disabled');
+  popupAddSubmitButton.disabled = true;
 };
 
 const formObj = {

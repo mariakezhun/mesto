@@ -1,11 +1,9 @@
-import {popupImgCloseButton, popupImgTitle, popupImgImage, popupImg, closePopupByEsc} from './index.js'
+import {popupImgTitle, popupImgImage, popupImg, openPopup} from './index.js'
 
 export default class Card {
   constructor(data, templateSelector) {
     this._name = data.name;
     this._link = data.link;
-    this._trash = data.trash;
-    this._like = data.like;
     this._templateSelector = templateSelector;
   }
 
@@ -20,14 +18,13 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._setEventListeners();
+   
 
-    this._element.querySelector(".element__image").src = this._link;
-    this._element.querySelector(".element__image").alt = this._name;
+    this._cardImage = this._element.querySelector(".element__image");
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     this._element.querySelector(".element__header").textContent = this._name;
-    this._element.querySelector(".element__trash").src = this._trash;
-    this._element.querySelector(".element__like").src = this._like;
-
+    this._setEventListeners();
     return this._element;
   }
 
@@ -35,26 +32,26 @@ export default class Card {
     popupImgImage.src = this._link;
     popupImgImage.alt = this._name;
     popupImgTitle.textContent = this._name;
-    popupImg.classList.add("popup_opened");
-    document.addEventListener("keydown", closePopupByEsc);
+    openPopup(popupImg);
+    // popupImg.classList.add("popup_opened");
+    // document.addEventListener("keydown", closePopupByEsc);
   }
 
-  _handleClosePopup() {
-    popupImgImage.src = "";
-    popupImgTitle.textContent = "";
-    popupImg.classList.remove("popup_opened");
-    document.removeEventListener("keydown", closePopupByEsc);
-  }
+  // _handleClosePopup() {
+  //   popupImgImage.src = "";
+  //   popupImgTitle.textContent = "";
+  //   popupImg.classList.remove("popup_opened");
+  //   document.removeEventListener("keydown", closePopupByEsc);
+  // }
 
   _setEventListeners() {
-    this._element
-      .querySelector(".element__image")
+    this._cardImage
       .addEventListener("click", () => {
         this._handleOpenPopup();
       });
-    popupImgCloseButton.addEventListener("click", () => {
-      this._handleClosePopup();
-    });
+    // popupImgCloseButton.addEventListener("click", () => {
+    //   this._handleClosePopup();
+    // });
     this._element
       .querySelector(".element__trash")
       .addEventListener("click", () => {

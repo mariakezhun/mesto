@@ -1,9 +1,11 @@
-import {popupImgTitle, popupImgImage, popupImg, openPopup} from './index.js'
+// import {popupImgTitle, popupImgImage, popupImg} from '../utils/constants.js'
+// import { openPopup } from '../pages/index.js';
 
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor({ data, handleCardClick }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
   }
 
@@ -18,7 +20,6 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-   
 
     this._cardImage = this._element.querySelector(".element__image");
     this._cardImage.src = this._link;
@@ -28,14 +29,14 @@ export default class Card {
     return this._element;
   }
 
-  _handleOpenPopup() {
-    popupImgImage.src = this._link;
-    popupImgImage.alt = this._name;
-    popupImgTitle.textContent = this._name;
-    openPopup(popupImg);
-    // popupImg.classList.add("popup_opened");
-    // document.addEventListener("keydown", closePopupByEsc);
-  }
+  // _handleOpenPopup() {
+  //   popupImgImage.src = this._link;
+  //   popupImgImage.alt = this._name;
+  //   popupImgTitle.textContent = this._name;
+  //   // openPopup(popupImg);
+  //   // popupImg.classList.add("popup_opened");
+  //   // document.addEventListener("keydown", closePopupByEsc);
+  // }
 
   // _handleClosePopup() {
   //   popupImgImage.src = "";
@@ -47,11 +48,11 @@ export default class Card {
   _setEventListeners() {
     this._cardImage
       .addEventListener("click", () => {
-        this._handleOpenPopup();
+        this._handleCardClick(this._link, this._name);
       });
-    // popupImgCloseButton.addEventListener("click", () => {
-    //   this._handleClosePopup();
-    // });
+    // // popupImgCloseButton.addEventListener("click", () => {
+    // //   this._handleClosePopup();
+    // // });
     this._element
       .querySelector(".element__trash")
       .addEventListener("click", () => {

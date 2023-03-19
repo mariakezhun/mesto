@@ -25,31 +25,12 @@ export default class Card {
     this._setEventListeners();
     return this._element;
   }
-
-  // _handleOpenPopup() {
-  //   popupImgImage.src = this._link;
-  //   popupImgImage.alt = this._name;
-  //   popupImgTitle.textContent = this._name;
-  //   // openPopup(popupImg);
-  //   // popupImg.classList.add("popup_opened");
-  //   // document.addEventListener("keydown", closePopupByEsc);
-  // }
-
-  // _handleClosePopup() {
-  //   popupImgImage.src = "";
-  //   popupImgTitle.textContent = "";
-  //   popupImg.classList.remove("popup_opened");
-  //   document.removeEventListener("keydown", closePopupByEsc);
-  // }
-
+  
   _setEventListeners() {
-    this._cardImage
-      .addEventListener("click", () => {
-        this._handleCardClick(this._link, this._name);
-      });
-    // // popupImgCloseButton.addEventListener("click", () => {
-    // //   this._handleClosePopup();
-    // // });
+    this._cardImage.addEventListener("click", () => {
+      this._handleCardClick(this._link, this._name);
+    });
+
     this._element
       .querySelector(".element__trash")
       .addEventListener("click", () => {

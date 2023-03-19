@@ -1,5 +1,4 @@
-//импорты
-import './index.css';
+import "./index.css";
 import Card from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -15,7 +14,7 @@ import {
   selectorPopupAdd,
   selectorPopupEdit,
   selectorprofileName,
-  selectorprofileDescription
+  selectorprofileDescription,
 } from "../utils/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -24,7 +23,7 @@ import UserInfo from "../components/UserInfo.js";
 const openPopupImage = new PopupWithImage(".popup_type_image");
 openPopupImage.setEventListeners();
 
-const newCard = (item) => {
+const createCard = (item) => {
   const card = new Card(
     {
       data: item,
@@ -38,42 +37,40 @@ const newCard = (item) => {
   return cardElement;
 };
 
-const newSection = new Section(
+const createSection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      return newCard(item);
+      return createCard(item);
     },
   },
   cardsContainer
 );
 
-newSection.renderItems();
+createSection.renderItems();
 
-const popupAddForm = new PopupWithForm({
+const createpopupAddForm = new PopupWithForm({
   popupSelector: selectorPopupAdd,
   callbackSubmitForm: (formData) => {
-    newSection.addItem(newCard(formData));
-    addFormValidator.disabledButton();
+    createSection.addItem(createCard(formData));
   },
 });
 
-popupAddForm.setEventListeners();
+createpopupAddForm.setEventListeners();
 
-const newUserInfo = new UserInfo({
+const editUserInfo = new UserInfo({
   nameSelector: selectorprofileName,
   aboutSelector: selectorprofileDescription,
 });
 
-const popupEditForm = new PopupWithForm({
+const createpopupEditForm = new PopupWithForm({
   popupSelector: selectorPopupEdit,
   callbackSubmitForm: (item) => {
-    newUserInfo.setUserInfo(item);
-    profileFormValidator.disabledButton();
+    editUserInfo.setUserInfo(item);
   },
 });
 
-popupEditForm.setEventListeners();
+createpopupEditForm.setEventListeners();
 
 const profileFormValidator = new FormValidator(formObj, formElementPopupEdit);
 const addFormValidator = new FormValidator(formObj, popupAddFormElement);
@@ -82,11 +79,14 @@ profileFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 popupAddOpeneButton.addEventListener("click", () => {
-  popupAddForm.open();
+  createpopupAddForm.open();
+  addFormValidator.disabledButton();
 });
 
 popupEditOpeneButton.addEventListener("click", () => {
-  popupEditForm.open();
+  createpopupEditForm.setInputValues(editUserInfo.getUserInfo());
+  createpopupEditForm.open();
+  profileFormValidator.disabledButton();
 });
 
 // //функция открытия

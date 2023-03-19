@@ -25,5 +25,5 @@
     font-weight: 900;
     src: url(./Inter-Black.ttf) format('truetype'),
     url(./Inter-Black.woff2) format('woff2'),
-    url(./Inter-Bold.woff) format('woff');
+    url(./Inter-Black.woff) format('woff');
   }

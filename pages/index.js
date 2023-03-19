@@ -4,20 +4,17 @@ import { FormValidator } from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import {
   initialCards,
-  popupAdd,
-  popupEdit,
   cardsContainer,
+  cardsTemplate,
   formElementPopupEdit,
   popupAddFormElement,
   formObj,
   popupAddOpeneButton,
   popupEditOpeneButton,
-  // popupEditOpeneButton,
-  // popupAddOpeneButton,
-  // popupEditCloseButton,
-  // popupAddCloseButton,
-  // popupImg,
-  // popupImgCloseButton,
+  selectorPopupAdd,
+  selectorPopupEdit,
+  selectorprofileName,
+  selectorprofileDescription
 } from "../utils/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -34,7 +31,7 @@ const newCard = (item) => {
         openPopupImage.open(link, name);
       },
     },
-    "#card-template"
+    cardsTemplate
   );
   const cardElement = card.generateCard();
   return cardElement;
@@ -53,7 +50,7 @@ const newSection = new Section(
 newSection.renderItems();
 
 const popupAddForm = new PopupWithForm({
-  popupSelector: ".popup_type_add",
+  popupSelector: selectorPopupAdd,
   callbackSubmitForm: (formData) => {
     newSection.addItem(newCard(formData));
     addFormValidator.disabledButton();
@@ -63,12 +60,12 @@ const popupAddForm = new PopupWithForm({
 popupAddForm.setEventListeners();
 
 const newUserInfo = new UserInfo({
-  nameSelector: ".profile__name",
-  aboutSelector: ".profile__description",
+  nameSelector: selectorprofileName,
+  aboutSelector: selectorprofileDescription,
 });
 
 const popupEditForm = new PopupWithForm({
-  popupSelector: ".popup_type_edit",
+  popupSelector: selectorPopupEdit,
   callbackSubmitForm: (item) => {
     newUserInfo.setUserInfo(item);
     profileFormValidator.disabledButton();

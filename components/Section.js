@@ -14,8 +14,4 @@ export default class Section {
       this.addItem(this._renderer(item));
     });
   }
-
-  // renderCard(data) {
-  //   this.addItem(this._renderer(data));
-  // }
 }

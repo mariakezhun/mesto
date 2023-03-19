@@ -32,21 +32,3 @@ export default class PopupWithForm extends Popup {
   }
 }
 
-// this._inputValues = {};
-// this._popupInput.forEach((input) => {
-//   this._inputValues[input.name] = input.value;
-// });
-// return this._inputValues;
-// this._inputList = Array.from(
-//   this._popupForm.querySelectorAll(".popup__input")
-// );
-// this._inputList = Array.from(
-//   this._popupForm.querySelectorAll(".popup__input")
-// );
-// return { name: this._inputList[0].value, link: this._inputList[1].value };
-
-// setInputValues(item) {
-//   this._inputList.forEach((input) => {
-//     input.value = item[input.name];
-//   });
-// }

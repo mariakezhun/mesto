@@ -1,30 +1,3 @@
-export const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
 export const formObj = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -41,9 +14,19 @@ export const cardsTemplate = "#card-template";
 export const selectorPopupAdd = ".popup_type_add";
 //селектор попап редактирования
 export const selectorPopupEdit = ".popup_type_edit";
+//попап удаления
+export const selectorPopupConfirme = ".popup_type_confirm";
+//попап редактирования аватара
+const popupAvatarEdit = document.querySelector(".popup_type_avatar-edit");
+export const popupAvatarEditFormElement = popupAvatarEdit.querySelector(".popup__form");
+export const selectorPopupAvatarEdit = ".popup_type_avatar-edit";
+export const popupAvatarEditOpenButton = document.querySelector(
+  ".profile__avatar-container"
+);
 //селекторы попапа добавления
 export const selectorprofileName = ".profile__name";
 export const selectorprofileDescription = ".profile__description";
+export const selectorprofileAvatar = document.querySelector(".profile__avatar");
 //попапы
 export const popupEdit = document.querySelector(".popup_type_edit");
 export const popupAdd = document.querySelector(".popup_type_add");
@@ -80,3 +63,30 @@ export const popupAddSubmitButton = popupAdd.querySelector(".popup__button");
 export const titleInput = popupAdd.querySelector(".popup__input_type_title");
 export const linkInput = popupAdd.querySelector(".popup__input_type_link");
 export const popupAddFormElement = popupAdd.querySelector(".popup__form");
+
+// export const initialCards = [
+//   {
+//     name: "Архыз",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+//   },
+//   {
+//     name: "Челябинская область",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+//   },
+//   {
+//     name: "Иваново",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+//   },
+//   {
+//     name: "Камчатка",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+//   },
+//   {
+//     name: "Холмогорский район",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+//   },
+//   {
+//     name: "Байкал",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+//   },
+// ];

@@ -9,6 +9,7 @@
   background-color: transparent;
   border: none;
   transition: opacity 0.5s ease-in-out;
+  /* display: none; */
 }
 
 .element__trash:hover{

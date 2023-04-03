@@ -60,12 +60,16 @@ export default class Card {
       this._handleCardDelete(this._id);
     });
     this._like.addEventListener("click", () => {
-      if (this._like.classList.contains("element__like_active")) {
-        this._handleDeleteLike(this._id);
-      } else {
-        this._handlePutLike(this._id);
-      }
+      this._likeSwitcher();
     });
+  }
+  
+  _likeSwitcher() {
+    if (this._like.classList.contains("element__like_active")) {
+      this._handleDeleteLike(this._id);
+    } else {
+      this._handlePutLike(this._id);
+    }
   }
 
   _hasTrash() {
@@ -85,8 +89,8 @@ export default class Card {
   }
 
   likeCard(data) {
+    this._like.classList.toggle("element__like_active");
     this._likes = data.likes;
     this._likesCounter.textContent = this._likes.length;
-    this._like.classList.toggle("element__like_active");
   }
 }

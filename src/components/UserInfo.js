@@ -21,12 +21,4 @@ export default class UserInfo {
   setUserAvatar({avatar}) {
     this._avatar.src = avatar;
   }
-
-  // setUserId(_id) {
-  //   this._userId = _id;
-  // }
-
-  // getUserId() {
-  //   return this._userId;
-  // }
 }

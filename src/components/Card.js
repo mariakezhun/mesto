@@ -60,11 +60,11 @@ export default class Card {
       this._handleCardDelete(this._id);
     });
     this._like.addEventListener("click", () => {
-      this._likeSwitcher();
+      this._switchLikes();
     });
   }
   
-  _likeSwitcher() {
+  _switchLikes() {
     if (this._like.classList.contains("element__like_active")) {
       this._handleDeleteLike(this._id);
     } else {
@@ -88,7 +88,7 @@ export default class Card {
     }
   }
 
-  likeCard(data) {
+  toggleLike(data) {
     this._like.classList.toggle("element__like_active");
     this._likes = data.likes;
     this._likesCounter.textContent = this._likes.length;

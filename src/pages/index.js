@@ -71,22 +71,24 @@ const createCard = (item) => {
     handleCardDelete: (_id) => {
       createPopupWithConfirmation.open();
       createPopupWithConfirmation.renderLoading(true);
-      createPopupWithConfirmation.submit(() => {
+      createPopupWithConfirmation.setSubmitHandler(() => {
         api
           .deleteCards(_id)
           .then(() => {
             createPopupWithConfirmation.close();
-            createPopupWithConfirmation.renderLoading(false);
             card.deleteCard();
           })
-          .catch((err) => console.log(err));
+          .catch((err) => console.log(err))
+          .finally(() => {
+            createPopupWithConfirmation.renderLoading(false);
+          });
       });
     },
     handlePutLike: (_id) => {
       api
         .putLike(_id)
         .then((data) => {
-          card.likeCard(data);
+          card.toggleLike(data);
         })
         .catch((err) => console.log(err));
     },
@@ -94,7 +96,7 @@ const createCard = (item) => {
       api
         .deleteLike(_id)
         .then((data) => {
-          card.likeCard(data);
+          card.toggleLike(data);
         })
         .catch((err) => console.log(err));
     },
@@ -116,9 +118,12 @@ const createpopupAddForm = new PopupWithForm({
       .addCards({ name: data.name, link: data.link })
       .then((item) => {
         createSection.addItem(createCard(item));
-        createpopupAddForm.renderLoading(false);
+        createpopupAddForm.close();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        createpopupAddForm.renderLoading(false);
+      });
   },
 });
 
@@ -138,9 +143,12 @@ const createpopupEditForm = new PopupWithForm({
       .addUserInfo(data)
       .then((res) => {
         editUserInfo.setUserInfo(res);
+        createpopupEditForm.close();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
         createpopupEditForm.renderLoading(false);
       })
-      .catch((err) => console.log(err));
   },
 });
 
@@ -155,9 +163,11 @@ const createpopupAvatarEdit = new PopupWithForm({
       .then((res) => {
         editUserInfo.setUserAvatar(res);
         createpopupAvatarEdit.close();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
         createpopupAvatarEdit.renderLoading(false);
       })
-      .catch((err) => console.log(err));
   },
 });
 

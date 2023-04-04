@@ -4,7 +4,7 @@ export default class Api {
     this._url = url;
   }
 
-  _status(res) {
+  _checkResponse(res) {
     if (res.ok) {
       return res.json();
     }
@@ -13,7 +13,7 @@ export default class Api {
 
   getCards() {
     return fetch(`${this._url}cards`, { headers: this._headers }).then(
-      this._status
+      this._checkResponse
     );
   }
 
@@ -22,19 +22,19 @@ export default class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ name, link }),
-    }).then(this._status);
+    }).then(this._checkResponse);
   }
 
   deleteCards(_id) {
     return fetch(`${this._url}cards/${_id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._status);
+    }).then(this._checkResponse);
   }
 
   getUserInfo() {
     return fetch(`${this._url}users/me`, { headers: this._headers }).then(
-      this._status
+      this._checkResponse
     );
   }
 
@@ -43,7 +43,7 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ name: data.name, about: data.about }),
-    }).then(this._status);
+    }).then(this._checkResponse);
   }
 
   editAvatar(data) {
@@ -51,21 +51,20 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ avatar: data.avatar }),
-    }).then(this._status);
+    }).then(this._checkResponse);
   }
 
   putLike(_id) {
     return fetch(`${this._url}cards/${_id}/likes`, {
       method: "PUT",
       headers: this._headers,
-    }).then(this._status);
+    }).then(this._checkResponse);
   }
 
   deleteLike(_id) {
     return fetch(`${this._url}cards/${_id}/likes`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._status);
+    }).then(this._checkResponse);
   }
-  
 }

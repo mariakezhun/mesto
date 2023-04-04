@@ -7,8 +7,8 @@ export default class PopupWithConfirmation extends Popup {
     this._button = this._popup.querySelector(".popup__button");
   }
 
-  submit(evt) {
-    this._handleSubmit = evt;
+  setSubmitHandler(handler) {
+    this._handleSubmit = handler;
   }
 
   setEventListeners() {
@@ -17,8 +17,8 @@ export default class PopupWithConfirmation extends Popup {
     this._yesButton.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleSubmit({ id: this._id, cards: this._cards });
-      this.close();
     });
+    // this.close();
   }
 
   open(id, cards) {

@@ -20,7 +20,7 @@
 .element__trash{background-color:transparent;background-image:url(823b0cf1b0b7e9cb7cad.svg);border:none;cursor:pointer;height:19px;position:absolute;right:20px;top:20px;transition:opacity .5s ease-in-out;width:18px}.element__trash:hover{opacity:.6}
 .element__header-container{align-items:center;display:flex;justify-content:space-between;margin:20px 0;width:100%}
 .element__header{color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0 0 0 21px;max-width:188px;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}
-.element__image{border-radius:10px 10px 0 0;cursor:pointer;height:282px;width:282px}
+.element__image{border-radius:10px 10px 0 0;cursor:pointer;height:282px;-o-object-fit:cover;object-fit:cover;width:282px}
 .element__like{background-color:transparent;background-image:url(87ed371465c7a6a1cd01.svg);border:0;cursor:pointer;height:19px;margin:0;padding:0;transition:opacity .5s ease-in-out;width:22px}.element__like:hover{opacity:.5}
 .element__like_active{background-image:url(fe17a515669479b1e649.svg)}
 .footer{margin:66px 200px 60px;max-width:880px}@media screen and (max-width:1187px){.footer{margin:66px auto 60px}}@media screen and (max-width:1100px){.footer{margin:66px 100px 60px}}@media screen and (max-width:722px){.footer{margin:66px 40px 60px}}@media screen and (max-width:420px){.footer{margin:48px 19px 36px}}
